@@ -55,5 +55,5 @@ export class CreateSubCategoryDto {
   })
   @ApiModelPropertyOptional()
   @IsMongoId()
-  readonly category: mongoose.Schema.Types.ObjectId;
+  readonly category: string;
 }

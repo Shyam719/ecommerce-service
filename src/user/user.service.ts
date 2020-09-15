@@ -244,7 +244,7 @@ export class UserService {
       ip: this.authService.getIp(req),
       browser: this.authService.getBrowserInfo(req),
       country: this.authService.getCountry(req),
-    });
+    } as any);
     await forgotPassword.save();
   }
 
