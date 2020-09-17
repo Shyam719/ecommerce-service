@@ -22,4 +22,9 @@ export class BannerService {
     const res = await banner.save();
     return res;
   }
+
+  async fetch(): Promise<Banner[]> {
+    const banners = await this.bannerModel.find({});
+    return banners;
+  }
 }

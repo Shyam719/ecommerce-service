@@ -16,6 +16,7 @@ import {
   HttpStatus,
   Body,
   UploadedFile,
+  Get,
 } from '@nestjs/common';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import {
@@ -53,5 +54,17 @@ export class BannerController {
   })
   async create(@UploadedFile() file, @Body() createBannerDto: CreateBannerDto) {
     return await this.bannerService.create(file, createBannerDto);
+  }
+
+  @Get()
+  @UseGuards(AuthGuard('jwt'))
+  @ApiOperation({ title: 'Fetch category' })
+  @ApiBearerAuth()
+  @ApiImplicitHeader({
+    name: 'Bearer',
+    description: 'the token we need for auth.',
+  })
+  async fetch() {
+    return await this.bannerService.fetch();
   }
 }

@@ -27,6 +27,9 @@ export class Banner extends Document {
 
   @Prop({ default: 1 })
   status: number;
+
+  @Prop({ default: 1 })
+  level: number;
 }
 
 export const BannerSchema = SchemaFactory.createForClass(Banner);
