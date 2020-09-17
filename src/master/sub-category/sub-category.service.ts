@@ -21,10 +21,12 @@ export class SubCategoryService {
       image: {
         data: files.image[0].buffer,
         contentType: files.image[0].mimetype,
+        originalName: files.image[0].originalname,
       },
       icon: {
         data: files.icon[0].buffer,
         contentType: files.icon[0].mimetype,
+        originalName: files.image[0].originalname,
       },
       category: mongoose.Types.ObjectId(createSubCatDto.category),
     };
