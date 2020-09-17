@@ -5,6 +5,8 @@ import {
   Body,
   UseInterceptors,
   UploadedFile,
+  Get,
+  Param,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from '../dto';
@@ -16,12 +18,14 @@ import {
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
-  @Post('/add')
-  @UseInterceptors(FileFieldsInterceptor([{ name: 'image', maxCount: 1 }]))
-  create(@UploadedFile() image) {
-    //@Body() createPrdDTO: CreateProductDto
-    console.log(image);
-    return 'super';
-    //return this.productService.addProduct(image, createPrdDTO);
+  @Post('')
+  @UseInterceptors(FileInterceptor('image'))
+  create(@UploadedFile() image, @Body() createPrdDTO: CreateProductDto) {
+    return this.productService.addProduct(image, createPrdDTO);
+  }
+
+  @Get('')
+  getProducts() {
+    return this.productService.getProducts();
   }
 }
