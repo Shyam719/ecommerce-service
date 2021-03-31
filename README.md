@@ -1,2 +1,2 @@
 # ecommerce-service
-Ecommerce backend
+Ecommerce backend - NestJS project
